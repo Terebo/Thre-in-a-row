@@ -29,7 +29,12 @@ def person():
     if (inputt == "A" or inputt == "B" or inputt == "C"):
         if (inputt2 > 0 and inputt2 < 4):
             inputt = [inputt, str(inputt2)]
-            draw(inputt, True)
+            checker = inputt in empty
+            if(checker == False):
+                print("\033[1;31;40mThat cell has already been chosen!\33[0m")
+                person()
+            else:
+                draw(inputt, True)
         else:
             print("number from 1 to 3 expected, got: " + str(inputt2))
             person()
@@ -72,17 +77,23 @@ def draw(cell, isperson):
             person()
         
 def ai():
-    global empty, aic, players
-    global A1, A2, A3, B1, B2, B3, C1, C2, C3
-    letters = ["A", "B", "C"]
-    randomcelllet = letters[random.randint(0,2)]
-    randomcellnum = random.randint(1,3)
-    cell = [randomcelllet, str(randomcellnum)]
-    checker = cell in empty
-    if(checker == False):
-        ai()
-    if(checker == True):
-        draw(cell, False)
+    inputt = input("A to C ").upper()
+    inputt2 = int(input("1 to 3 "))
+    if (inputt == "A" or inputt == "B" or inputt == "C"):
+        if (inputt2 > 0 and inputt2 < 4):
+            inputt = [inputt, str(inputt2)]
+            checker = inputt in empty
+            if(checker == False):
+                print("\033[1;31;40mThat cell has already been chosen!\33[0m")
+                ai()
+            else:
+                draw(inputt, False)
+        else:
+            print("number from 1 to 3 expected, got: " + str(inputt2))
+            person()
+    else:
+       print("letter from A to C expected, got: " + inputt)
+       person()
 
 colorama.init()
 print("\33[34mblue player \33[0mmay choose") 

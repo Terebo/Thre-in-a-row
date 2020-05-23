@@ -9,8 +9,7 @@ def exit():
     sys.exit()
 
 def multiplayer():
-    print("nope not yet!")
-    mainmenu()
+    import multiplayer
 
 def singleplayer():
     print("choose:\n \033[1;32;40measy \n \033[1;31;40mnormal\33[0m")
